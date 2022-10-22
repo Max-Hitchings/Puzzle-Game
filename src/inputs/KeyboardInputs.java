@@ -20,7 +20,7 @@ public class KeyboardInputs implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                gamePanel.changeYDelta(-10);
+                gamePanel.spawnRect(10, 10);
                 break;
             case KeyEvent.VK_S:
                 gamePanel.changeYDelta(10);

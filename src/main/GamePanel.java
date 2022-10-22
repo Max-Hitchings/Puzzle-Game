@@ -47,16 +47,16 @@ public class GamePanel extends JPanel {
         this.yDelta = y;
     }
 
+    public void updateGame() {
+        updateRec();
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
-        updateRec();
-        
+
         g.setColor(recColour);
         g.fillRect((int) xDelta,(int) yDelta, 200, 60);
         g.drawRect(100, 200, 200, 60);
-
-
     }
 
     private void updateRec() {
@@ -79,4 +79,6 @@ public class GamePanel extends JPanel {
 
         return new Color(r, g, b);
     }
+
+
 }

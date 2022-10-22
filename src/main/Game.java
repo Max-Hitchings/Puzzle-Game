@@ -5,6 +5,7 @@ public class Game implements Runnable{
     private GamePanel gamePanel;
     private Thread gameThread;
     private final int FPS_SET = 144;
+    private final int TPS_SET = 20;
     public Game() {
         gamePanel = new GamePanel();
         gameWindow = new GameWindow(gamePanel);
@@ -17,29 +18,58 @@ public class Game implements Runnable{
         gameThread.start();
     }
 
+    public void update() {
+        gamePanel.updateGame();
+    }
+
     @Override
     public void run() {
 
         double frameTime = 1000000000.0 / FPS_SET;
-        long lastFrame = System.nanoTime();
-        long now;
+        double timePerTick = 1000000000.0 / TPS_SET;
+
+        long previousTime = System.nanoTime();
+        int updates = 0;
+
         int frames = 0;
         long lastCheck = System.currentTimeMillis();
 
-        while (true) {
-            now = System.nanoTime();
+        double deltaLag = 0;
+        double deltaFrames = 0;
 
-            if (now - lastFrame >= frameTime) {
-                gamePanel.repaint();
-                lastFrame = now;
-                frames++;
+        long currentTime;
+
+        while (true) {
+            currentTime = System.nanoTime();
+
+            deltaLag += (currentTime - previousTime) / timePerTick;
+            deltaFrames += (currentTime - previousTime) / frameTime;
+            previousTime = currentTime;
+
+            if (deltaLag >= 1) {
+                update();
+                updates++;
+                deltaLag--;
             }
+
+            if (deltaFrames >= 1) {
+                gamePanel.repaint();
+                frames++;
+                deltaFrames--;
+            }
+
+//            if (now - lastFrame >= frameTime) {
+//                gamePanel.repaint();
+//                lastFrame = now;
+//                frames++;
+//            }
 
 
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis();
-                System.out.println("FPS " + frames);
-                frames=0;
+                System.out.println("FPS " + frames + " | TPS: " + updates);
+                frames = 0;
+                updates = 0;
             }
 
         }

@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/infoDisplay/Display.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/MouseInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +27,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/inputs/KeyboardInputs.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/inputs/MouseInputs.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/Game.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/GamePanel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/GameWindow.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/MainClass.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -41,7 +48,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RunManager">
@@ -74,5 +82,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="stuff" />
   </component>
 </project>

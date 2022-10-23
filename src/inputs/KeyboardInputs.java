@@ -20,22 +20,31 @@ public class KeyboardInputs implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                gamePanel.changeYDelta(-10);
+                gamePanel.player.setYVelocity(-2);
                 break;
             case KeyEvent.VK_S:
-                gamePanel.changeYDelta(10);
+                gamePanel.player.setYVelocity(2);
                 break;
             case KeyEvent.VK_A:
-                gamePanel.changeXDelta(-10);
+                gamePanel.player.setXVelocity(-2);
                 break;
             case KeyEvent.VK_D:
-                gamePanel.changeXDelta(10);
+                gamePanel.player.setXVelocity(2);
                 break;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_W:
+            case KeyEvent.VK_S:
+                gamePanel.player.setYVelocity(0);
+                break;
+            case KeyEvent.VK_A:
+            case KeyEvent.VK_D:
+                gamePanel.player.setXVelocity(0);
+                break;
+        }
     }
 }

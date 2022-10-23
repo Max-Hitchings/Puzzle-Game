@@ -3,18 +3,22 @@ package main;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 
+import player.Player;
+
 import javax.swing.JPanel;
 import java.awt.*;
 import java.util.Random;
 
 public class GamePanel extends JPanel {
-    int PANEL_SIZE_X = 1280;
-    int PANEL_SIZE_Y = 800;
+    int PANEL_SIZE_X = 1280 / 2;
+    int PANEL_SIZE_Y = 800 / 2;
     private MouseInputs mouseInputs = new MouseInputs(this);
     private float xDelta = 0, yDelta = 0;
     private float xDir = .5f, yDir = .5f;
     private Color recColour = new Color(23, 67, 200);
     private Random random = new Random();
+
+    public Player player = new Player(10, 10);
 
     public GamePanel() {
         setPanelSize();
@@ -49,10 +53,13 @@ public class GamePanel extends JPanel {
 
     public void updateGame() {
         updateRec();
+        player.updatePlayer();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        player.drawPlayer(g);
 
         g.setColor(recColour);
         g.fillRect((int) xDelta,(int) yDelta, 200, 60);

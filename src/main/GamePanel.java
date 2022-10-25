@@ -4,24 +4,18 @@ import infoDisplay.Display;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 
-import player.Player;
-
 import javax.swing.JPanel;
 import java.awt.*;
-import java.util.Random;
+
 
 public class GamePanel extends JPanel {
-    int PANEL_SIZE_X = 1280 ;
-    int PANEL_SIZE_Y = 800;
-    private MouseInputs mouseInputs = new MouseInputs(this);
-    private float xDelta = 0, yDelta = 0;
-    private float xDir = .5f, yDir = .5f;
-    private Color recColour = new Color(23, 67, 200);
-    private Random random = new Random();
-
-    public Player player = new Player(10, 10);
-
-    public GamePanel() {
+    final int PANEL_SIZE_X = 1280 ;
+    final int PANEL_SIZE_Y = 800;
+    private MouseInputs mouseInputs;
+    private Game game;
+    public GamePanel(Game game) {
+        mouseInputs = new MouseInputs(this);
+        this.game = game;
         setPanelSize();
 
         addKeyListener(new KeyboardInputs(this));
@@ -37,29 +31,10 @@ public class GamePanel extends JPanel {
         setPreferredSize(size);
     }
 
-    public void changeXDelta(int value) {
-        this.xDelta += value;
-//        System.out.println(this.xDelta);
-
-    }
-    public void changeYDelta(int value) {
-        this.yDelta += value;
-        System.out.println(this.yDelta);
-    }
-
-    public void setRectPos(int x, int y) {
-        this.xDelta = x;
-        this.yDelta = y;
-    }
-
-    public void updateGame() {
-        updateRec();
-        player.updatePlayer();
-    }
     private Display infoDisplay = new Display(PANEL_SIZE_X - 60, 15);
 
     public void update_fps(int fps) {
-     infoDisplay.updateFPS(fps);
+        infoDisplay.updateFPS(fps);
     }
     public void update_tps(int tps) {
         infoDisplay.updateTPS(tps);
@@ -68,35 +43,11 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        player.drawPlayer(g);
         infoDisplay.draw_display(g);
 
-
-        g.setColor(recColour);
-        g.fillRect((int) xDelta,(int) yDelta, 200, 60);
-        g.drawRect(100, 200, 200, 60);
+        game.render(g);
     }
-
-    private void updateRec() {
-        xDelta += xDir;
-        yDelta += yDir;
-        if (xDelta >= PANEL_SIZE_X || xDelta <= 0) {
-            xDir *= -1;
-            recColour = getRndColour();
-        }
-        if (yDelta >= PANEL_SIZE_Y || yDelta <= 0) {
-            yDir *= -1;
-            recColour = getRndColour();
-        }
+    public Game getGame() {
+        return game;
     }
-
-    private Color getRndColour() {
-        int r = random.nextInt(255);
-        int g = random.nextInt(255);
-        int b = random.nextInt(255);
-
-        return new Color(r, g, b);
-    }
-
-
 }

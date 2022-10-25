@@ -1,9 +1,12 @@
 package main;
 
+import infoDisplay.Display;
+
 public class Game implements Runnable{
     private GameWindow gameWindow;
     private GamePanel gamePanel;
     private Thread gameThread;
+
     private final int FPS_SET = 144;
     private final int TPS_SET = 200;
     public Game() {
@@ -67,6 +70,8 @@ public class Game implements Runnable{
 
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis();
+                gamePanel.update_fps(frames);
+                gamePanel.update_tps(updates);
                 System.out.println("FPS " + frames + " | TPS: " + updates);
                 frames = 0;
                 updates = 0;

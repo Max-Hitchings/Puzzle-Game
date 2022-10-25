@@ -1,5 +1,6 @@
 package main;
 
+import infoDisplay.Display;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 
@@ -10,8 +11,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class GamePanel extends JPanel {
-    int PANEL_SIZE_X = 1280 / 2;
-    int PANEL_SIZE_Y = 800 / 2;
+    int PANEL_SIZE_X = 1280 ;
+    int PANEL_SIZE_Y = 800;
     private MouseInputs mouseInputs = new MouseInputs(this);
     private float xDelta = 0, yDelta = 0;
     private float xDir = .5f, yDir = .5f;
@@ -55,11 +56,21 @@ public class GamePanel extends JPanel {
         updateRec();
         player.updatePlayer();
     }
+    private Display infoDisplay = new Display(PANEL_SIZE_X - 60, 15);
+
+    public void update_fps(int fps) {
+     infoDisplay.updateFPS(fps);
+    }
+    public void update_tps(int tps) {
+        infoDisplay.updateTPS(tps);
+    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         player.drawPlayer(g);
+        infoDisplay.draw_display(g);
+
 
         g.setColor(recColour);
         g.fillRect((int) xDelta,(int) yDelta, 200, 60);

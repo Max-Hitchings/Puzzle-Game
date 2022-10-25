@@ -20,10 +20,11 @@ public class KeyboardInputs implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                gamePanel.player.setYVelocity(-2);
+
+                gamePanel.player.adjustYVelocity(-2);
                 break;
             case KeyEvent.VK_S:
-                gamePanel.player.setYVelocity(2);
+                gamePanel.player.adjustYVelocity(2);
                 break;
             case KeyEvent.VK_A:
                 gamePanel.player.setXVelocity(-2);
@@ -38,8 +39,9 @@ public class KeyboardInputs implements KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
+                gamePanel.player.adjustYVelocity(2);
             case KeyEvent.VK_S:
-                gamePanel.player.setYVelocity(0);
+                gamePanel.player.adjustYVelocity(-2);
                 break;
             case KeyEvent.VK_A:
             case KeyEvent.VK_D:

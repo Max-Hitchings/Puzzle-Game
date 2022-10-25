@@ -2,13 +2,22 @@ package player;
 
 import java.awt.Graphics;
 
-public class Player {
-    public void setYVelocity(int velocity) {
-        yVelocity = velocity;
-    }
+public class Player extends movmentKeyTracker {
+
+    public void setYVelocity(int velocity) { yVelocity = velocity; }
     public void setXVelocity(int velocity) {
         xVelocity = velocity;
     }
+
+    public void adjustYVelocity(int deltaV) {
+        yVelocity += deltaV;
+        if (yVelocity > 2 ) {
+            yVelocity = 2;
+        } else if (yVelocity < -2) {
+            yVelocity = -2;
+        }
+    }
+    public void adjustXVelocity(int deltaV) { xVelocity += deltaV; }
 
     enum state {
         ALIVE,

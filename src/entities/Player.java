@@ -22,12 +22,12 @@ public class Player extends Entity{
     private void updatePos() {
         if (left && !right) {
             x -= playerSpeed;
-        } else if  (right && !left) {
+        } else if (right && !left) {
             x += playerSpeed;
         }
 
         if (up && !down) {
-            y -=playerSpeed;
+            y -= playerSpeed;
         } else if (down && !up) {
             y += playerSpeed;
         }
@@ -51,6 +51,10 @@ public class Player extends Entity{
 
     public void render(Graphics g) {
         g.drawImage(sprite, (int) x, (int) y, 96, 96, null);
+    }
+
+    public void cancelMovement() {
+        right = down = left = up = false;
     }
 
     public boolean isUp() {

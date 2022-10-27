@@ -9,13 +9,14 @@ import java.awt.*;
 
 
 public class GamePanel extends JPanel {
-    final int PANEL_SIZE_X = 1280 ;
-    final int PANEL_SIZE_Y = 800;
+    int panelSizeX, panelSizeY;
     private MouseInputs mouseInputs;
     private Game game;
-    public GamePanel(Game game) {
+    public GamePanel(Game game, int size_x, int size_y) {
         mouseInputs = new MouseInputs(this);
         this.game = game;
+        panelSizeX = size_x;
+        panelSizeY = size_y;
         setPanelSize();
 
         addKeyListener(new KeyboardInputs(this));
@@ -24,28 +25,28 @@ public class GamePanel extends JPanel {
     }
 
     private void setPanelSize() {
-        // 32px tiles so 40 wide and 25 high
-        Dimension size = new Dimension(PANEL_SIZE_X, PANEL_SIZE_Y);
+        Dimension size = new Dimension(panelSizeX, panelSizeY);
         setMinimumSize(size);
         setMaximumSize(size);
         setPreferredSize(size);
     }
 
-    private Display infoDisplay = new Display(PANEL_SIZE_X - 60, 15);
+    private Display infoDisplay = new Display(panelSizeX - 60, 15);
 
-    public void update_fps(int fps) {
-        infoDisplay.updateFPS(fps);
-    }
-    public void update_tps(int tps) {
-        infoDisplay.updateTPS(tps);
-    }
+//    public void update_fps(int fps) {
+//        infoDisplay.updateFPS(fps);
+//    }
+//    public void update_tps(int tps) {
+//        infoDisplay.updateTPS(tps);
+//    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        infoDisplay.draw_display(g);
+
 
         game.render(g);
+        infoDisplay.draw_display(g);
     }
     public Game getGame() {
         return game;

@@ -1,5 +1,8 @@
 package entities;
 
+import utils.LoadStuff;
+import utils.Constants.SpriteAtlas;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,9 +14,9 @@ public class Player extends Entity{
     private float playerSpeed = 2.0f;
     private BufferedImage sprite;
 
-    public Player(float x, float y) {
-        super(x, y);
-        loadSprite();
+    public Player(float x, float y, int width, int height) {
+        super(x, y, width, height);
+        sprite = LoadStuff.Sprite(SpriteAtlas.PLAYER);
     }
     public void update() {
         updatePos();
@@ -33,24 +36,9 @@ public class Player extends Entity{
         }
     }
 
-    private void loadSprite() {
-        InputStream is = getClass().getResourceAsStream("/res/player.png");
-        try {
-            sprite = ImageIO.read(is);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     public void render(Graphics g) {
-        g.drawImage(sprite, (int) x, (int) y, 96, 96, null);
+        g.drawImage(sprite, (int) x, (int) y, width, height, null);
     }
 
     public void cancelMovement() {

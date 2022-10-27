@@ -1,5 +1,6 @@
 package main;
 
+import Levels.LevelManager;
 import entities.Player;
 import infoDisplay.Display;
 
@@ -13,10 +14,22 @@ public class Game implements Runnable{
     private final int FPS_SET = 144;
     private final int TPS_SET = 200;
     private Player player;
+    private LevelManager levelManager;
+    private Display infoDisplay;
+    int x = 10;
+
+    public final static int TILE_NORMAL_SIZE = 32;
+    public final static float SCALE = 2f;
+    public final static int TILES_IN_WIDTH = 16;
+    public final static int TILES_IN_HEIGHT = 9;
+    public final static int TILE_SIZE = (int) (TILE_NORMAL_SIZE * SCALE);
+    public final static int GAME_WIDTH = TILE_SIZE * TILES_IN_WIDTH;
+    public final static int GAME_HEIGHT = TILE_SIZE * TILES_IN_HEIGHT;
+
     public Game() {
         initClasses();
 
-        gamePanel = new GamePanel(this);
+        gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
 
@@ -24,7 +37,9 @@ public class Game implements Runnable{
     }
 
     private void initClasses() {
-        player = new Player(20, 20);
+        player = new Player(20, 20, TILE_SIZE, TILE_SIZE);
+        levelManager = new LevelManager(this);
+        infoDisplay = new Display(GAME_WIDTH - 60, 15);
     }
 
     private void startGameLoop() {
@@ -33,10 +48,13 @@ public class Game implements Runnable{
     }
 
     public void update() {
+        levelManager.update();
         player.update();
     }
     public void render(Graphics g) {
+        levelManager.render(g);
         player.render(g);
+        infoDisplay.draw_display(g);
     }
     @Override
     public void run() {
@@ -83,8 +101,8 @@ public class Game implements Runnable{
 
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis();
-                gamePanel.update_fps(frames);
-                gamePanel.update_tps(updates);
+                infoDisplay.updateFPS(frames);
+                infoDisplay.updateTPS(updates);
                 System.out.println("FPS " + frames + " | TPS: " + updates);
                 frames = 0;
                 updates = 0;

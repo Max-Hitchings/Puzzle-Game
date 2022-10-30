@@ -1,48 +1,66 @@
 package entities;
 
+import main.Game;
 import utils.LoadStuff;
 import utils.Constants.SpriteAtlas;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
+
+import static main.Game.TILE_SIZE;
 
 public class Player extends Entity{
     private boolean up, down, left, right;
+    private boolean moving = false;
+    private ArrayList<SubPlayer> subPlayers = new ArrayList<>();
     private float playerSpeed = 2.0f;
-    private BufferedImage sprite;
+    private Game game;
 
-    public Player(float x, float y, int width, int height) {
-        super(x, y, width, height);
-        sprite = LoadStuff.Sprite(SpriteAtlas.PLAYER);
+    public Player(Game game, int tilePosX, int tilePosY) {
+        super(tilePosX * TILE_SIZE, tilePosY * TILE_SIZE, SpriteAtlas.PLAYER);
+        this.game = game;
+        subPlayers.add(new SubPlayer(this, 1, 0));
     }
-    public void update() {
-        updatePos();
-    }
-
-    private void updatePos() {
-        if (left && !right) {
-            x -= playerSpeed;
-        } else if (right && !left) {
-            x += playerSpeed;
-        }
-
-        if (up && !down) {
-            y -= playerSpeed;
-        } else if (down && !up) {
-            y += playerSpeed;
-        }
-    }
-
 
     public void render(Graphics g) {
-        g.drawImage(sprite, (int) x, (int) y, width, height, null);
+        g.drawImage(sprite, (int) x, (int) y, TILE_SIZE, TILE_SIZE, null);
+        System.out.println("test");
+        for (SubPlayer subplayer : subPlayers) {
+//            System.out.println(subPlayers.get(j));
+            subplayer.render(g);
+        }
     }
 
     public void cancelMovement() {
         right = down = left = up = false;
+    }
+    public void moveSubPlayers(int deltaX, int deltaY) {
+        for (SubPlayer subPlayer : subPlayers) {
+            subPlayer.move(deltaX, deltaY);
+        }
+    }
+
+    public void moveLeft() {
+        if (game.getGameGrid().isOkayToMove((int) x - TILE_SIZE, (int) y)) {
+            x -= TILE_SIZE;
+        }
+    }
+    public void moveRight() {
+        if (game.getGameGrid().isOkayToMove((int) x + TILE_SIZE, (int) y)) {
+            x += TILE_SIZE;
+        }
+    }
+    public void moveUp() {
+        if (game.getGameGrid().isOkayToMove((int) x, (int) y - TILE_SIZE)) {
+            y -= TILE_SIZE;
+        }
+    }
+    public void moveDown() {
+        if (game.getGameGrid().isOkayToMove((int) x, (int) y + TILE_SIZE)) {
+            y += TILE_SIZE;
+        }
     }
 
     public boolean isUp() {

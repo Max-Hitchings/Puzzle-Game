@@ -1,9 +1,11 @@
 package Levels;
 
-public class Level {
-    public int[][] layout;
+import utils.Constants.Grid;
 
-    public Level(int[][] layout) {
+public class Level {
+    public Grid.TYPES[][] layout;
+
+    public Level(Grid.TYPES[][] layout) {
         this.layout = layout;
     }
 }

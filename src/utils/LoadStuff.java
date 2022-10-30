@@ -2,6 +2,7 @@ package utils;
 
 import Levels.Level;
 import utils.Constants.MapBlocks;
+import utils.Constants.Grid;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -52,7 +53,7 @@ public class LoadStuff {
 
 
     public static Level LoadLevel(String fileName, int width, int height) {
-        int[][] encodedLvlData = new int[height][width];
+        Grid.TYPES[][] encodedLvlData = new Grid.TYPES[height][width];
 
 
         try {

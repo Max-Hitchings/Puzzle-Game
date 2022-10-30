@@ -15,6 +15,7 @@ public class Game implements Runnable{
     private final int TPS_SET = 200;
     private Player player;
     private LevelManager levelManager;
+    private GameGrid gameGrid;
     private Display infoDisplay;
     int x = 10;
 
@@ -30,6 +31,7 @@ public class Game implements Runnable{
         initClasses();
 
         gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
+        gamePanel.setBackground(new Color(63, 75, 48));
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
 
@@ -37,9 +39,14 @@ public class Game implements Runnable{
     }
 
     private void initClasses() {
-        player = new Player(20, 20, TILE_SIZE, TILE_SIZE);
+        gameGrid = new GameGrid(TILES_IN_WIDTH, TILES_IN_HEIGHT);
+        player = new Player(this, 1, 1);
         levelManager = new LevelManager(this);
         infoDisplay = new Display(GAME_WIDTH - 60, 15);
+    }
+
+    public GameGrid getGameGrid() {
+        return gameGrid;
     }
 
     private void startGameLoop() {
@@ -49,7 +56,7 @@ public class Game implements Runnable{
 
     public void update() {
         levelManager.update();
-        player.update();
+//        player.update();
     }
     public void render(Graphics g) {
         levelManager.render(g);
@@ -103,7 +110,7 @@ public class Game implements Runnable{
                 lastCheck = System.currentTimeMillis();
                 infoDisplay.updateFPS(frames);
                 infoDisplay.updateTPS(updates);
-                System.out.println("FPS " + frames + " | TPS: " + updates);
+//                System.out.println("FPS " + frames + " | TPS: " + updates);
                 frames = 0;
                 updates = 0;
             }

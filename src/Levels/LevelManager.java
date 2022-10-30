@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 
 import static main.Game.TILES_IN_HEIGHT;
 import static main.Game.TILES_IN_WIDTH;
+import static utils.Constants.MapBlocks.BlockToSprite;
 
 public class LevelManager {
     private Game game;
@@ -18,6 +19,7 @@ public class LevelManager {
         this.game = game;
         loadMapBlocks();
         level1 = LoadStuff.LoadLevel("level_1.txt", TILES_IN_WIDTH, TILES_IN_HEIGHT);
+        game.getGameGrid().loadLevel(level1);
     }
 
     private void loadMapBlocks() {
@@ -35,12 +37,16 @@ public class LevelManager {
     public void render(Graphics g) {
         for (int i = 0; i < TILES_IN_HEIGHT; i++) {
             for (int j = 0; j < TILES_IN_WIDTH; j++) {
-                g.drawImage(mapBlocks[level1.layout[i][j]], Game.TILE_SIZE * j, Game.TILE_SIZE * i, Game.TILE_SIZE, Game.TILE_SIZE, null);
+                g.drawImage(mapBlocks[BlockToSprite(level1.layout[i][j])], Game.TILE_SIZE * j, Game.TILE_SIZE * i, Game.TILE_SIZE, Game.TILE_SIZE, null);
             }
         }
     }
 
     public void update() {
 
+    }
+
+    public Level getLevel1() {
+        return level1;
     }
 }

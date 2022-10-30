@@ -1,12 +1,18 @@
 package entities;
 
+import utils.LoadStuff;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+import static main.Game.TILE_SIZE;
+
 public class Entity {
     float x, y;
-    int width, height;
-    public Entity(float x, float y, int width, int height) {
+    BufferedImage sprite;
+    public Entity(int x, int y, Point spriteAtlasPos) {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        sprite = LoadStuff.Sprite(spriteAtlasPos);
     }
 }

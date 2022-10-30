@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="stuff">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Refactor /res directory">
+      <change afterPath="$PROJECT_DIR$/src/entities/SubPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FirstGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FirstGame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/level_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/player.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/sprites.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/level_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/level_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Levels/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Levels/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels/LevelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/infoDisplay/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/infoDisplay/Display.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/LoadStuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/LoadStuff.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +57,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "D:/Max/Java/FirstGame/src/res",
+    "last_opened_file_path": "D:/Max/Java/FirstGame/res",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
@@ -62,8 +70,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Max\Java\FirstGame\res" />
       <recent name="D:\Max\Java\FirstGame\src\res" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value=" df" />
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -75,8 +89,23 @@
       <updated>1664823782101</updated>
       <workItem from="1666739106319" duration="2029000" />
       <workItem from="1666804322905" duration="21768000" />
-      <workItem from="1667134266018" duration="3354000" />
+      <workItem from="1667134266018" duration="18819000" />
     </task>
+    <task id="LOCAL-00001" summary="Refactor /res directory">
+      <created>1667147552288</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667147552288</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactor /res directory">
+      <created>1667147566087</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667147566087</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,7 +124,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="stuff" />
+    <MESSAGE value="Refactor /res directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor /res directory" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FirstGame$Main.ic" NAME="Main Coverage Results" MODIFIED="1666811045609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

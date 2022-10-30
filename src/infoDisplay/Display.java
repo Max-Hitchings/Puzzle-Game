@@ -11,7 +11,7 @@ public class Display {
         this.y = y;
     }
     public void draw_display(Graphics g) {
-        g.setColor(new Color(0, 100, 100));
+        g.setColor(new Color(158, 5, 7));
         g.drawString("FPS: " + FPS, x, y);
         g.drawString("TPS: " + TPS, x, y + 15);
     }

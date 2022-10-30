@@ -32,7 +32,7 @@ public class LoadStuff {
 
     public static BufferedImage Sprite(Point pos) {
         BufferedImage img, sprite = null;
-        InputStream is = LoadStuff.class.getResourceAsStream("/res/sprites.png");
+        InputStream is = LoadStuff.class.getResourceAsStream("/sprites.png");
         try {
             img = ImageIO.read(is);
             sprite = img.getSubimage(pos.x*32, pos.y*32, 32, 32);
@@ -56,7 +56,7 @@ public class LoadStuff {
 
 
         try {
-            InputStream is = LoadStuff.class.getResourceAsStream("/res/" + fileName);
+            InputStream is = LoadStuff.class.getResourceAsStream("/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
             String line;

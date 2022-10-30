@@ -22,7 +22,7 @@ public class LevelManager {
 
     private void loadMapBlocks() {
         mapBlocks = new BufferedImage[4];
-        BufferedImage spriteSheet = LoadStuff.Image("res/sprites.png");
+        BufferedImage spriteSheet = LoadStuff.Image("sprites.png");
         int k = 0;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++)  {

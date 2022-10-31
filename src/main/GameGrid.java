@@ -3,6 +3,8 @@ package main;
 import Levels.Level;
 import utils.Constants.Grid;
 
+import java.awt.*;
+
 import static main.Game.TILE_SIZE;
 
 public class GameGrid {
@@ -20,11 +22,28 @@ public class GameGrid {
     public boolean isOkayToMove(int x, int y) {
         x = x / TILE_SIZE;
         y = y / TILE_SIZE;
-//        System.out.println(grid[y][x]);
         if (grid[y][x] != Grid.TYPES.WALL && grid[y][x] != Grid.TYPES.EMPTY_PLAYER){
             return true;
         } else {
             return false;
         }
+    }
+    public Point checkForNewSubPlayers(int x, int y) {
+        x = x / TILE_SIZE;
+        y = y / TILE_SIZE;
+        if (grid[y+1][x] == Grid.TYPES.EMPTY_PLAYER){
+            grid[y+1][x] = Grid.TYPES.EMPTY;
+            return new Point(0, 1);
+        } if (grid[y-1][x] == Grid.TYPES.EMPTY_PLAYER){
+            grid[y-1][x] = Grid.TYPES.EMPTY;
+            return new Point(0, -1);
+        } if (grid[y][x+1] == Grid.TYPES.EMPTY_PLAYER){
+            grid[y][x+1] = Grid.TYPES.EMPTY;
+            return new Point(1, 0);
+        } if (grid[y][x-1] == Grid.TYPES.EMPTY_PLAYER){
+            grid[y][x-1] = Grid.TYPES.EMPTY;
+            return new Point(-1, 0);
+        }
+        return null;
     }
 }

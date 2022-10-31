@@ -18,15 +18,22 @@ public class Player extends Entity{
     private float playerSpeed = 2.0f;
     public Player(Game game, int tilePosX, int tilePosY) {
         super(game, tilePosX * TILE_SIZE, tilePosY * TILE_SIZE, SpriteAtlas.PLAYER);
-        subPlayers.add(new SubPlayer(this, 1, 0));
-        subPlayers.add(new SubPlayer(this, 5, 0));
+//        subPlayers.add(new SubPlayer(this, 1, 0));
+//        subPlayers.add(new SubPlayer(this, 5, 0));
     }
 
     public void render(Graphics g) {
         g.drawImage(sprite, (int) x, (int) y, TILE_SIZE, TILE_SIZE, null);
         for (SubPlayer subplayer : subPlayers) {
-//            System.out.println(subPlayers.get(j));
             subplayer.render(g);
+        }
+    }
+
+    public void addSubPlayer(Point deltas) {
+        if (deltas != null){
+            System.out.println(deltas.x);
+            System.out.println(deltas.y);
+            subPlayers.add(new SubPlayer(this, deltas.x, deltas.y));
         }
     }
 
@@ -41,9 +48,7 @@ public class Player extends Entity{
 
     private boolean okayToMove(int xDelta, int yDelta) {
         boolean move = true;
-        System.out.println(x);
         boolean playerMove = game.getGameGrid().isOkayToMove((int) x + (xDelta * TILE_SIZE), (int) y + (yDelta * TILE_SIZE));
-//        System.out.println(playerMove);
         if (playerMove) {
             for (SubPlayer subPlayer : subPlayers) {
                 if (!subPlayer.checkCollision(xDelta, yDelta)) {
@@ -56,30 +61,37 @@ public class Player extends Entity{
         return move;
     }
 
+    private void checkForNewSubPlayers() {
+        addSubPlayer(game.getGameGrid().checkForNewSubPlayers((int) x, (int) y));
+    }
+
     public void moveLeft() {
         if (okayToMove(-1, 0)) {
             x -= TILE_SIZE;
             moveSubPlayers(-TILE_SIZE, 0);
+            checkForNewSubPlayers();
         }
     }
     public void moveRight() {
         if (okayToMove(1, 0)) {
             x += TILE_SIZE;
             moveSubPlayers(TILE_SIZE, 0);
-
+            checkForNewSubPlayers();
         }
     }
+
     public void moveUp() {
         if (okayToMove(0, -1)) {
             y -= TILE_SIZE;
             moveSubPlayers(0, -TILE_SIZE);
-
+            checkForNewSubPlayers();
         }
     }
     public void moveDown() {
         if (okayToMove(0, 1)) {
             y += TILE_SIZE;
             moveSubPlayers(0, TILE_SIZE);
+            checkForNewSubPlayers();
         }
     }
 

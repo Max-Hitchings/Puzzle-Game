@@ -16,17 +16,14 @@ public class Player extends Entity{
     private boolean moving = false;
     private ArrayList<SubPlayer> subPlayers = new ArrayList<>();
     private float playerSpeed = 2.0f;
-    private Game game;
-
     public Player(Game game, int tilePosX, int tilePosY) {
-        super(tilePosX * TILE_SIZE, tilePosY * TILE_SIZE, SpriteAtlas.PLAYER);
-        this.game = game;
+        super(game, tilePosX * TILE_SIZE, tilePosY * TILE_SIZE, SpriteAtlas.PLAYER);
         subPlayers.add(new SubPlayer(this, 1, 0));
+        subPlayers.add(new SubPlayer(this, 5, 0));
     }
 
     public void render(Graphics g) {
         g.drawImage(sprite, (int) x, (int) y, TILE_SIZE, TILE_SIZE, null);
-        System.out.println("test");
         for (SubPlayer subplayer : subPlayers) {
 //            System.out.println(subPlayers.get(j));
             subplayer.render(g);
@@ -42,24 +39,47 @@ public class Player extends Entity{
         }
     }
 
+    private boolean okayToMove(int xDelta, int yDelta) {
+        boolean move = true;
+        System.out.println(x);
+        boolean playerMove = game.getGameGrid().isOkayToMove((int) x + (xDelta * TILE_SIZE), (int) y + (yDelta * TILE_SIZE));
+//        System.out.println(playerMove);
+        if (playerMove) {
+            for (SubPlayer subPlayer : subPlayers) {
+                if (!subPlayer.checkCollision(xDelta, yDelta)) {
+                    move = false;
+                }
+            }
+        } else {
+            move = false;
+        }
+        return move;
+    }
+
     public void moveLeft() {
-        if (game.getGameGrid().isOkayToMove((int) x - TILE_SIZE, (int) y)) {
+        if (okayToMove(-1, 0)) {
             x -= TILE_SIZE;
+            moveSubPlayers(-TILE_SIZE, 0);
         }
     }
     public void moveRight() {
-        if (game.getGameGrid().isOkayToMove((int) x + TILE_SIZE, (int) y)) {
+        if (okayToMove(1, 0)) {
             x += TILE_SIZE;
+            moveSubPlayers(TILE_SIZE, 0);
+
         }
     }
     public void moveUp() {
-        if (game.getGameGrid().isOkayToMove((int) x, (int) y - TILE_SIZE)) {
+        if (okayToMove(0, -1)) {
             y -= TILE_SIZE;
+            moveSubPlayers(0, -TILE_SIZE);
+
         }
     }
     public void moveDown() {
-        if (game.getGameGrid().isOkayToMove((int) x, (int) y + TILE_SIZE)) {
+        if (okayToMove(0, 1)) {
             y += TILE_SIZE;
+            moveSubPlayers(0, TILE_SIZE);
         }
     }
 

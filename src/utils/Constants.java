@@ -5,6 +5,12 @@ import main.GameGrid;
 import java.awt.*;
 
 public class Constants {
+    public enum MOVES {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    }
     public static class Grid {
         public enum TYPES {
             PLAYER,

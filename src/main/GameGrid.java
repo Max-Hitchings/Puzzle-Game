@@ -21,7 +21,7 @@ public class GameGrid {
         x = x / TILE_SIZE;
         y = y / TILE_SIZE;
 //        System.out.println(grid[y][x]);
-        if (grid[y][x] == Grid.TYPES.EMPTY){
+        if (grid[y][x] != Grid.TYPES.WALL && grid[y][x] != Grid.TYPES.EMPTY_PLAYER){
             return true;
         } else {
             return false;

@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Detection for subplayers from main player + adding them to subPlayers array">
+    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="allow SubPlayers to pickup new SubPlayers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/SubPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/SubPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/MouseInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +85,7 @@
       <workItem from="1666739106319" duration="2029000" />
       <workItem from="1666804322905" duration="21768000" />
       <workItem from="1667134266018" duration="18819000" />
-      <workItem from="1667301346944" duration="3849000" />
+      <workItem from="1667301346944" duration="5137000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor /res directory">
       <created>1667147552288</created>
@@ -131,7 +129,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667242788156</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="allow SubPlayers to pickup new SubPlayers">
+      <created>1667401090802</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667401090802</updated>
+    </task>
+    <task id="LOCAL-00008" summary="allow SubPlayers to pickup new SubPlayers">
+      <created>1667423716508</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667423716508</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +160,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="tile-game" />
                       </list>
                     </value>
                   </entry>
@@ -185,7 +197,8 @@
     <MESSAGE value="Refactor /res directory" />
     <MESSAGE value="Collisions for SubPlayers" />
     <MESSAGE value="Detection for subplayers from main player + adding them to subPlayers array" />
-    <option name="LAST_COMMIT_MESSAGE" value="Detection for subplayers from main player + adding them to subPlayers array" />
+    <MESSAGE value="allow SubPlayers to pickup new SubPlayers" />
+    <option name="LAST_COMMIT_MESSAGE" value="allow SubPlayers to pickup new SubPlayers" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FirstGame$Main.ic" NAME="Main Coverage Results" MODIFIED="1666811045609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

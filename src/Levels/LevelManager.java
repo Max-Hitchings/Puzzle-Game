@@ -1,6 +1,7 @@
 package Levels;
 
 import main.Game;
+import utils.Constants;
 import utils.LoadStuff;
 
 import java.awt.*;
@@ -8,12 +9,13 @@ import java.awt.image.BufferedImage;
 
 import static main.Game.TILES_IN_HEIGHT;
 import static main.Game.TILES_IN_WIDTH;
-import static utils.Constants.MapBlocks.BlockToSprite;
+import static utils.Constants.SpriteAtlas.ATLAS_DIMENTIONS;
+import static utils.Constants.SpriteAtlas.GetAtlasPos;
 
 public class LevelManager {
     private Game game;
     private Level level1;
-    private BufferedImage[] mapBlocks;
+    private BufferedImage[][] mapBlocks;
 
     public LevelManager(Game game) {
         this.game = game;
@@ -23,12 +25,12 @@ public class LevelManager {
     }
 
     private void loadMapBlocks() {
-        mapBlocks = new BufferedImage[4];
+        mapBlocks = new BufferedImage[ATLAS_DIMENTIONS.y][ATLAS_DIMENTIONS.x];
         BufferedImage spriteSheet = LoadStuff.Image("sprites.png");
         int k = 0;
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++)  {
-                mapBlocks[k] = spriteSheet.getSubimage(i*32, j*32, 32, 32);
+        for (int i = 0; i < ATLAS_DIMENTIONS.y; i++) {
+            for (int j = 0; j < ATLAS_DIMENTIONS.x; j++)  {
+                mapBlocks[i][j] = spriteSheet.getSubimage(j*32, i*32, 32, 32);
                 k++;
             }
         }
@@ -37,7 +39,7 @@ public class LevelManager {
     public void render(Graphics g) {
         for (int i = 0; i < TILES_IN_HEIGHT; i++) {
             for (int j = 0; j < TILES_IN_WIDTH; j++) {
-                g.drawImage(mapBlocks[BlockToSprite(level1.layout[i][j])], Game.TILE_SIZE * j, Game.TILE_SIZE * i, Game.TILE_SIZE, Game.TILE_SIZE, null);
+                g.drawImage(mapBlocks[GetAtlasPos(level1.layout[i][j]).y][GetAtlasPos(level1.layout[i][j]).x], Game.TILE_SIZE * j, Game.TILE_SIZE * i, Game.TILE_SIZE, Game.TILE_SIZE, null);
             }
         }
     }

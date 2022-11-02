@@ -5,30 +5,45 @@ import main.GameGrid;
 import java.awt.*;
 
 public class Constants {
-    public enum MOVES {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
     public static class Grid {
         public enum TYPES {
             PLAYER,
             WALL,
             EMPTY,
-            EMPTY_PLAYER
+            EMPTY_PLAYER,
+            FINISH_TILE
         }
     }
     public static class SpriteAtlas {
+        public static Point ATLAS_DIMENTIONS = new Point(2,3);
+        public static final Point EMPTY = new Point(0, 0);
+
         public static final Point PLAYER = new Point(0, 1);
         public static final Point WALL = new Point(1, 0);
         public static final Point EMPTY_PLAYER = new Point(1, 1);
+        public static final Point FINISH_TILE = new Point(0, 2);
+        public static Point GetAtlasPos(Grid.TYPES block) {
+            switch (block) {
+                case WALL:
+                    return WALL;
+                case PLAYER:
+                    return PLAYER;
+                case EMPTY_PLAYER:
+                    return EMPTY_PLAYER;
+                case FINISH_TILE:
+                    return FINISH_TILE;
+                case EMPTY:
+                default:
+                    return EMPTY;
+            }
+        }
     }
     public static class MapBlocks {
         public static final char EMPTY = '_';
         public static final char WALL = '#';
         public static final char PLAYER_SPAWN = 'A';
         public static final char EMPTY_PLAYER = '2';
+        public static final char FINISH_TILE = 'F';
 
 
         public static Grid.TYPES GetBlockType(char character) {
@@ -39,22 +54,11 @@ public class Constants {
                     return Grid.TYPES.PLAYER;
                 case EMPTY_PLAYER:
                     return Grid.TYPES.EMPTY_PLAYER;
+                case FINISH_TILE:
+                    return Grid.TYPES.FINISH_TILE;
                 case EMPTY:
                 default:
                     return Grid.TYPES.EMPTY;
-            }
-        }
-        public static int BlockToSprite(Grid.TYPES type) {
-            switch (type) {
-                case WALL:
-                    return 2;
-                case PLAYER:
-                    return 1;
-                case EMPTY_PLAYER:
-                    return 3;
-                case EMPTY:
-                default:
-                    return 0;
             }
         }
     }

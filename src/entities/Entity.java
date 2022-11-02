@@ -1,7 +1,6 @@
 package entities;
 
 import main.Game;
-import utils.Constants.MOVES;
 import utils.LoadStuff;
 
 import java.awt.*;

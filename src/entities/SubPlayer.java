@@ -16,15 +16,18 @@ public class SubPlayer extends Entity{
         this.yTilesDelta = yTilesDelta;
         this.xTilesDelta = xTilesDelta;
         this.player = player;
+        player.addSubPlayer(checkForNewSubPlayers());
     }
 
     public void render(Graphics g) {
         g.drawImage(sprite, (int) player.x + (xTilesDelta * TILE_SIZE), (int) player.y + (yTilesDelta * TILE_SIZE), TILE_SIZE, TILE_SIZE, null);
-
     }
 
     public boolean checkCollision(int xDelta, int yDelta) {
         return game.getGameGrid().isOkayToMove((int) x + (xTilesDelta * TILE_SIZE) + (xDelta * TILE_SIZE), (int) y + (yTilesDelta * TILE_SIZE) + (yDelta * TILE_SIZE));
+    }
+    public Point checkForNewSubPlayers() {
+        return game.getGameGrid().checkForNewSubPlayers((int) x + (xTilesDelta * TILE_SIZE), (int) y + (yTilesDelta * TILE_SIZE), new Point(xTilesDelta, yTilesDelta));
     }
 
     public void move(int deltaX, int deltaY) {

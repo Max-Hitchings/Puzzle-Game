@@ -28,21 +28,21 @@ public class GameGrid {
             return false;
         }
     }
-    public Point checkForNewSubPlayers(int x, int y) {
+    public Point checkForNewSubPlayers(int x, int y, Point delta) {
         x = x / TILE_SIZE;
         y = y / TILE_SIZE;
         if (grid[y+1][x] == Grid.TYPES.EMPTY_PLAYER){
             grid[y+1][x] = Grid.TYPES.EMPTY;
-            return new Point(0, 1);
+            return new Point(0 + delta.x, 1 + delta.y);
         } if (grid[y-1][x] == Grid.TYPES.EMPTY_PLAYER){
             grid[y-1][x] = Grid.TYPES.EMPTY;
-            return new Point(0, -1);
+            return new Point(0 + delta.x, -1 + delta.y);
         } if (grid[y][x+1] == Grid.TYPES.EMPTY_PLAYER){
             grid[y][x+1] = Grid.TYPES.EMPTY;
-            return new Point(1, 0);
+            return new Point(1 + delta.x, 0 + delta.y);
         } if (grid[y][x-1] == Grid.TYPES.EMPTY_PLAYER){
             grid[y][x-1] = Grid.TYPES.EMPTY;
-            return new Point(-1, 0);
+            return new Point(-1 + delta.x, 0 + delta.y);
         }
         return null;
     }

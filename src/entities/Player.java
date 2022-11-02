@@ -31,8 +31,6 @@ public class Player extends Entity{
 
     public void addSubPlayer(Point deltas) {
         if (deltas != null){
-            System.out.println(deltas.x);
-            System.out.println(deltas.y);
             subPlayers.add(new SubPlayer(this, deltas.x, deltas.y));
         }
     }
@@ -62,7 +60,10 @@ public class Player extends Entity{
     }
 
     private void checkForNewSubPlayers() {
-        addSubPlayer(game.getGameGrid().checkForNewSubPlayers((int) x, (int) y));
+        addSubPlayer(game.getGameGrid().checkForNewSubPlayers((int) x, (int) y, new Point(0, 0)));
+        for (SubPlayer subPlayer : subPlayers) {
+            addSubPlayer(subPlayer.checkForNewSubPlayers());
+        }
     }
 
     public void moveLeft() {

@@ -11,7 +11,8 @@ public class Constants {
             WALL,
             EMPTY,
             EMPTY_PLAYER,
-            FINISH_TILE
+            FINISH_TILE,
+            PLAYER_CORRECT
         }
     }
     public static class SpriteAtlas {
@@ -22,6 +23,7 @@ public class Constants {
         public static final Point WALL = new Point(1, 0);
         public static final Point EMPTY_PLAYER = new Point(1, 1);
         public static final Point FINISH_TILE = new Point(0, 2);
+        public static final Point PLAYER_CORRECT = new Point(1, 2);
         public static Point GetAtlasPos(Grid.TYPES block) {
             switch (block) {
                 case WALL:
@@ -32,6 +34,8 @@ public class Constants {
                     return EMPTY_PLAYER;
                 case FINISH_TILE:
                     return FINISH_TILE;
+                case PLAYER_CORRECT:
+                    return PLAYER_CORRECT;
                 case EMPTY:
                 default:
                     return EMPTY;

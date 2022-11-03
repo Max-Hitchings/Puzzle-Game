@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="fixed error from adding subplayers to subplayers">
+    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Better way of indexing sprite atlas and added finish tile to atlas">
+      <change afterPath="$PROJECT_DIR$/res/level_1-test-joint-subplayer.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/sprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/sprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/level_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/level_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Levels/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels/LevelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputs/MouseInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/MouseInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667424719157</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Better way of indexing sprite atlas and added finish tile to atlas">
+      <created>1667426243704</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667426243704</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,15 +218,16 @@
     <MESSAGE value="Detection for subplayers from main player + adding them to subPlayers array" />
     <MESSAGE value="allow SubPlayers to pickup new SubPlayers" />
     <MESSAGE value="fixed error from adding subplayers to subplayers" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed error from adding subplayers to subplayers" />
+    <MESSAGE value="Better way of indexing sprite atlas and added finish tile to atlas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better way of indexing sprite atlas and added finish tile to atlas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Levels/LevelManager.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="3" />
+          <line>40</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

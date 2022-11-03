@@ -1,7 +1,6 @@
 package Levels;
 
 import main.Game;
-import utils.Constants;
 import utils.LoadStuff;
 
 import java.awt.*;

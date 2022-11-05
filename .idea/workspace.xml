@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Fixed bugs with restarting level + now resets player aswell">
+    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Simplified player movement + cleaned up Player class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Levels/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels/LevelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/level_1-test-joint-subplayer.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/level_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/player.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/SubPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/SubPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +115,9 @@
       <workItem from="1667560470109" duration="820000" />
       <workItem from="1667561705677" duration="10951000" />
       <workItem from="1667616071335" duration="92000" />
-      <workItem from="1667616170078" duration="1722000" />
+      <workItem from="1667616170078" duration="2326000" />
+      <workItem from="1667618608962" duration="109000" />
+      <workItem from="1667618956547" duration="5209000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor /res directory">
       <created>1667147552288</created>
@@ -219,7 +224,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667615887854</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Proof of concept player win conditions (im going to bed cba to do real thing)">
+      <created>1667618136991</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667618136991</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Simplified player movement + cleaned up Player class">
+      <created>1667651015559</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667651015559</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,27 +300,10 @@
     <MESSAGE value="edit map a bit to test" />
     <MESSAGE value="Load levels with json and added restart feature (bugs)" />
     <MESSAGE value="Fixed bugs with restarting level + now resets player aswell" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs with restarting level + now resets player aswell" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
-          <line>33</line>
-          <properties class="main.GameGrid" method="isOkayToMove">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Proof of concept player win conditions (im going to bed)" />
+    <MESSAGE value="Proof of concept player win conditions (im going to bed cba to do real thing)" />
+    <MESSAGE value="Simplified player movement + cleaned up Player class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified player movement + cleaned up Player class" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

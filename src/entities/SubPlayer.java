@@ -1,7 +1,6 @@
 package entities;
 
 import utils.Constants;
-import utils.LoadStuff;
 
 import java.awt.*;
 
@@ -12,13 +11,12 @@ public class SubPlayer extends Entity{
     public int yTilesDelta, xTilesDelta;
     private Player player;
     public SubPlayer(Player player, int xTilesDelta, int yTilesDelta) {
-        super(player.game, (int) player.x, (int) player.y, Constants.SpriteAtlas.PLAYER);
+        super(player.game, (int) player.x, (int) player.y);
         this.yTilesDelta = yTilesDelta;
         this.xTilesDelta = xTilesDelta;
         this.player = player;
         player.addSubPlayer(checkForNewSubPlayers());
     }
-
     public void render(Graphics g) {
         g.drawImage(sprite, (int) player.x + (xTilesDelta * TILE_SIZE), (int) player.y + (yTilesDelta * TILE_SIZE), TILE_SIZE, TILE_SIZE, null);
     }
@@ -39,9 +37,9 @@ public class SubPlayer extends Entity{
 //    TODO optimise this
     private void checkForWin() {
         if (game.getGameGrid().checkWin((int) x + (xTilesDelta * TILE_SIZE), (int) y + (yTilesDelta * TILE_SIZE))) {
-            sprite = LoadStuff.Sprite(Constants.SpriteAtlas.PLAYER_CORRECT);
+            sprite = sprites.get(Constants.PlayerSprites.CORRECT);
         } else {
-            sprite = LoadStuff.Sprite(Constants.SpriteAtlas.PLAYER);
+            sprite = sprites.get(Constants.PlayerSprites.NORMAL);
         }
     }
 }

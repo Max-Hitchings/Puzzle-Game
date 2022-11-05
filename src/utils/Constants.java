@@ -3,6 +3,11 @@ package utils;
 import java.awt.Point;
 
 public class Constants {
+    public enum PlayerSprites {
+            NORMAL,
+            CORRECT
+    }
+
     public static class Grid {
         public enum TYPES {
             PLAYER,

@@ -1,8 +1,7 @@
 package entities;
 
 import main.Game;
-import utils.Constants.SpriteAtlas;
-import utils.LoadStuff;
+import utils.Constants;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,12 +9,9 @@ import java.util.ArrayList;
 import static main.Game.TILE_SIZE;
 
 public class Player extends Entity{
-    private boolean up, down, left, right;
     private ArrayList<SubPlayer> subPlayers = new ArrayList<>();
     public Player(Game game, int tilePosX, int tilePosY) {
-        super(game, tilePosX * TILE_SIZE, tilePosY * TILE_SIZE, SpriteAtlas.PLAYER);
-//        subPlayers.add(new SubPlayer(this, 1, 0));
-//        subPlayers.add(new SubPlayer(this, 5, 0));
+        super(game, tilePosX * TILE_SIZE, tilePosY * TILE_SIZE);
     }
 
     public void render(Graphics g) {
@@ -38,9 +34,6 @@ public class Player extends Entity{
         }
     }
 
-    public void cancelMovement() {
-        right = down = left = up = false;
-    }
     public void moveSubPlayers(int deltaX, int deltaY) {
         for (SubPlayer subPlayer : subPlayers) {
             subPlayer.move(deltaX, deltaY);
@@ -73,9 +66,9 @@ public class Player extends Entity{
 //    TODO optimise this
     private void checkForWin() {
         if (game.getGameGrid().checkWin((int) x, (int) y)) {
-            sprite = LoadStuff.Sprite(SpriteAtlas.PLAYER_CORRECT);
+            sprite = sprites.get(Constants.PlayerSprites.CORRECT);
         } else {
-            sprite = LoadStuff.Sprite(SpriteAtlas.PLAYER);
+            sprite = sprites.get(Constants.PlayerSprites.NORMAL);
         }
     }
 

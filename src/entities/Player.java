@@ -12,7 +12,6 @@ import static main.Game.TILE_SIZE;
 public class Player extends Entity{
     private boolean up, down, left, right;
     private ArrayList<SubPlayer> subPlayers = new ArrayList<>();
-    private float playerSpeed = 2.0f;
     public Player(Game game, int tilePosX, int tilePosY) {
         super(game, tilePosX * TILE_SIZE, tilePosY * TILE_SIZE, SpriteAtlas.PLAYER);
 //        subPlayers.add(new SubPlayer(this, 1, 0));
@@ -80,68 +79,13 @@ public class Player extends Entity{
         }
     }
 
-    public void moveLeft() {
-        if (okayToMove(-1, 0)) {
-            x -= TILE_SIZE;
-            moveSubPlayers(-TILE_SIZE, 0);
+    public void move(Point delta) {
+        if (okayToMove(delta.x, delta.y)) {
+            x += delta.x * TILE_SIZE;
+            y += delta.y * TILE_SIZE;
+            moveSubPlayers(delta.x * TILE_SIZE, delta.y * TILE_SIZE);
             checkForNewSubPlayers();
             checkForWin();
         }
-    }
-
-    public void moveRight() {
-        if (okayToMove(1, 0)) {
-            x += TILE_SIZE;
-            moveSubPlayers(TILE_SIZE, 0);
-            checkForNewSubPlayers();
-            checkForWin();
-        }
-    }
-
-    public void moveUp() {
-        if (okayToMove(0, -1)) {
-            y -= TILE_SIZE;
-            moveSubPlayers(0, -TILE_SIZE);
-            checkForNewSubPlayers();
-        }
-    }
-    public void moveDown() {
-        if (okayToMove(0, 1)) {
-            y += TILE_SIZE;
-            moveSubPlayers(0, TILE_SIZE);
-            checkForNewSubPlayers();
-        }
-    }
-
-    public boolean isUp() {
-        return up;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
     }
 }

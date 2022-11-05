@@ -15,8 +15,11 @@ public class GameGrid {
 //        Level level = getLevel1();
     }
 
+    public Grid.TYPES[][] getGrid() {return grid;};
+
     public void loadLevel(Level level) {
 //        Initialise grid
+//        grid = level.layout.clone();
         grid = level.layout;
     }
     public boolean isOkayToMove(int x, int y) {
@@ -33,16 +36,16 @@ public class GameGrid {
         y = y / TILE_SIZE;
         if (grid[y+1][x] == Grid.TYPES.EMPTY_PLAYER){
             grid[y+1][x] = Grid.TYPES.EMPTY;
-            return new Point(0 + delta.x, 1 + delta.y);
+            return new Point(delta.x, 1 + delta.y);
         } if (grid[y-1][x] == Grid.TYPES.EMPTY_PLAYER){
             grid[y-1][x] = Grid.TYPES.EMPTY;
-            return new Point(0 + delta.x, -1 + delta.y);
+            return new Point(delta.x, -1 + delta.y);
         } if (grid[y][x+1] == Grid.TYPES.EMPTY_PLAYER){
             grid[y][x+1] = Grid.TYPES.EMPTY;
-            return new Point(1 + delta.x, 0 + delta.y);
+            return new Point(1 + delta.x, delta.y);
         } if (grid[y][x-1] == Grid.TYPES.EMPTY_PLAYER){
             grid[y][x-1] = Grid.TYPES.EMPTY;
-            return new Point(-1 + delta.x, 0 + delta.y);
+            return new Point(-1 + delta.x, delta.y);
         }
         return null;
     }

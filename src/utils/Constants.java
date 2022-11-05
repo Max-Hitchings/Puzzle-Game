@@ -1,8 +1,6 @@
 package utils;
 
-import main.GameGrid;
-
-import java.awt.*;
+import java.awt.Point;
 
 public class Constants {
     public static class Grid {
@@ -16,7 +14,7 @@ public class Constants {
         }
     }
     public static class SpriteAtlas {
-        public static Point ATLAS_DIMENTIONS = new Point(2,3);
+        public static final Point ATLAS_DIMENSIONS = new Point(2,3);
         public static final Point EMPTY = new Point(0, 0);
 
         public static final Point PLAYER = new Point(0, 1);

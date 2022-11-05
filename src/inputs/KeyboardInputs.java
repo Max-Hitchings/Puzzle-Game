@@ -48,6 +48,8 @@ public class KeyboardInputs implements KeyListener {
             case KeyEvent.VK_DOWN:
                 gamePanel.getGame().getPlayer().moveDown();
                 break;
+            case KeyEvent.VK_R:
+                gamePanel.getGame().getLevelManager().restartLevel();
         }
     }
 

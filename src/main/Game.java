@@ -20,7 +20,7 @@ public class Game implements Runnable{
     int x = 10;
 
     public final static int TILE_NORMAL_SIZE = 32;
-    public final static float SCALE = 2.5f;
+    public final static float SCALE = 1.5f;
     public final static int TILES_IN_WIDTH = 16;
     public final static int TILES_IN_HEIGHT = 9;
     public final static int TILE_SIZE = (int) (TILE_NORMAL_SIZE * SCALE);
@@ -121,4 +121,5 @@ public class Game implements Runnable{
     public Player getPlayer() {
         return player;
     }
+    public LevelManager getLevelManager() {return levelManager; };
 }

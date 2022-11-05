@@ -31,15 +31,16 @@ public class SubPlayer extends Entity{
     public void move(int deltaX, int deltaY) {
         x += deltaX;
         y += deltaY;
-        checkForWin();
     }
 
 //    TODO optimise this
-    private void checkForWin() {
+    public boolean checkForWin() {
         if (game.getGameGrid().checkWin((int) x + (xTilesDelta * TILE_SIZE), (int) y + (yTilesDelta * TILE_SIZE))) {
             sprite = sprites.get(Constants.PlayerSprites.CORRECT);
+            return true;
         } else {
             sprite = sprites.get(Constants.PlayerSprites.NORMAL);
+            return false;
         }
     }
 }

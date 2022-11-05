@@ -4,13 +4,12 @@ import Levels.Level;
 import utils.Constants.Grid;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 import static main.Game.TILE_SIZE;
 
 public class GameGrid {
     private Grid.TYPES[][] grid;
-    private ArrayList<Point> finishTiles = new ArrayList<>();
+    public int finishTiles = 0;
 
     public GameGrid(int tile_w, int tile_h) {
         grid = new Grid.TYPES[tile_h][tile_w];
@@ -23,10 +22,11 @@ public class GameGrid {
 //        Initialise grid
 //        grid = level.layout.clone();
         grid = level.layout;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] == Grid.TYPES.FINISH_TILE) {
-                    finishTiles.add(new Point(j, i));
+        finishTiles = 0;
+        for (Grid.TYPES[] types : grid) {
+            for (Grid.TYPES type : types) {
+                if (type == Grid.TYPES.FINISH_TILE) {
+                    finishTiles += 1;
                 }
             }
         }

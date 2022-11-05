@@ -34,6 +34,16 @@ public class Player extends Entity{
         }
     }
 
+    public void move(Point delta) {
+        if (okayToMove(delta.x, delta.y)) {
+            x += delta.x * TILE_SIZE;
+            y += delta.y * TILE_SIZE;
+            moveSubPlayers(delta.x * TILE_SIZE, delta.y * TILE_SIZE);
+            checkForNewSubPlayers();
+            checkForWin();
+        }
+    }
+
     public void moveSubPlayers(int deltaX, int deltaY) {
         for (SubPlayer subPlayer : subPlayers) {
             subPlayer.move(deltaX, deltaY);
@@ -63,22 +73,23 @@ public class Player extends Entity{
 
     }
 
-//    TODO optimise this
     private void checkForWin() {
         if (game.getGameGrid().checkWin((int) x, (int) y)) {
             sprite = sprites.get(Constants.PlayerSprites.CORRECT);
+
+            boolean win = true;
+            for (SubPlayer subPlayer : subPlayers) {
+                if (!subPlayer.checkForWin()) win = false;
+            }
+            if (win && subPlayers.size() == game.getGameGrid().finishTiles - 1)  {
+                triggerWin();
+            }
         } else {
             sprite = sprites.get(Constants.PlayerSprites.NORMAL);
         }
     }
 
-    public void move(Point delta) {
-        if (okayToMove(delta.x, delta.y)) {
-            x += delta.x * TILE_SIZE;
-            y += delta.y * TILE_SIZE;
-            moveSubPlayers(delta.x * TILE_SIZE, delta.y * TILE_SIZE);
-            checkForNewSubPlayers();
-            checkForWin();
-        }
+    private void triggerWin() {
+        System.out.println("win");
     }
 }

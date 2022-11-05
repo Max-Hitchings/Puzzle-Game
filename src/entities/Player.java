@@ -1,19 +1,15 @@
 package entities;
 
 import main.Game;
-import utils.LoadStuff;
 import utils.Constants.SpriteAtlas;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import static main.Game.TILE_SIZE;
 
 public class Player extends Entity{
     private boolean up, down, left, right;
-    private boolean moving = false;
     private ArrayList<SubPlayer> subPlayers = new ArrayList<>();
     private float playerSpeed = 2.0f;
     public Player(Game game, int tilePosX, int tilePosY) {
@@ -27,6 +23,13 @@ public class Player extends Entity{
         for (SubPlayer subplayer : subPlayers) {
             subplayer.render(g);
         }
+    }
+
+    public void reset() {
+        Point spawn = game.getLevelManager().getCurrentLevel().playerSpawn;
+        subPlayers.clear();
+        x = spawn.x * TILE_SIZE;
+        y = spawn.y * TILE_SIZE;
     }
 
     public void addSubPlayer(Point deltas) {

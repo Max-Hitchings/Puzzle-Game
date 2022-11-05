@@ -24,7 +24,7 @@ public class JsonLevel {
         public Level createLevel() throws IOException {
 
             BufferedReader bufReader = new BufferedReader(new StringReader(layout));
-            Constants.Grid.TYPES[][] encodedLayoutData = new Constants.Grid.TYPES[9][16];
+            Constants.Grid.TYPES[][] encodedLayoutData = new Constants.Grid.TYPES[dimensions[1]][dimensions[0]];
 
 
             String line="";
@@ -33,16 +33,12 @@ public class JsonLevel {
             {
                 char[] charLine = line.toCharArray();
                 int j = 0;
-//                System.out.println(j);
                 for (char c : charLine) {
                         encodedLayoutData[i][j] = Constants.MapBlocks.GetBlockType(c);
                         j++;
-
                 }
                 i++;
             }
-//            return new Level(new Constants.Grid.TYPES[1][1], new Point(), new Point());
-
             return new Level(encodedLayoutData, new Point(playerSpawn[0], playerSpawn[1]), new Point(dimensions[0], dimensions[1]));
         }
 

@@ -24,9 +24,6 @@ public class LevelManager {
         currentLevel = level1;
 
         game.getGameGrid().loadLevel(currentLevel);
-        System.out.println(game.getGameGrid().getGrid()[2][9]);
-        System.out.println(game.getGameGrid().getGrid()[2][9]);
-
     }
 
     private void loadMapBlocks() {
@@ -42,9 +39,9 @@ public class LevelManager {
     }
 
     public void restartLevel() {
-        System.out.println(game.getGameGrid().getGrid()[2][9]);
-        game.getGameGrid().loadLevel(LoadStuff.LoadJSONLevel("level_1.json"));
-        System.out.println(game.getGameGrid().getGrid()[2][9]);
+        game.getPlayer().reset();
+        currentLevel = LoadStuff.LoadJSONLevel("level_1.json");
+        game.getGameGrid().loadLevel(currentLevel);
     }
 
     public void render(Graphics g) {

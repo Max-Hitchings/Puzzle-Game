@@ -10,7 +10,6 @@ public class Level {
     public Point playerSpawn;
     public Grid.TYPES[][] layout;
 
-
     public Level(Grid.TYPES[][] layout, Point playerSpawn, Point dimensions) {
         this.layout = layout;
         this.playerSpawn = playerSpawn;

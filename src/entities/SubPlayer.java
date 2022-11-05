@@ -1,7 +1,7 @@
 package entities;
 
-import main.Game;
 import utils.Constants;
+import utils.LoadStuff;
 
 import java.awt.*;
 
@@ -33,5 +33,15 @@ public class SubPlayer extends Entity{
     public void move(int deltaX, int deltaY) {
         x += deltaX;
         y += deltaY;
+        checkForWin();
+    }
+
+//    TODO optimise this
+    private void checkForWin() {
+        if (game.getGameGrid().checkWin((int) x + (xTilesDelta * TILE_SIZE), (int) y + (yTilesDelta * TILE_SIZE))) {
+            sprite = LoadStuff.Sprite(Constants.SpriteAtlas.PLAYER_CORRECT);
+        } else {
+            sprite = LoadStuff.Sprite(Constants.SpriteAtlas.PLAYER);
+        }
     }
 }

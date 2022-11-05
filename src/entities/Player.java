@@ -2,6 +2,7 @@ package entities;
 
 import main.Game;
 import utils.Constants.SpriteAtlas;
+import utils.LoadStuff;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -70,18 +71,30 @@ public class Player extends Entity{
 
     }
 
+//    TODO optimise this
+    private void checkForWin() {
+        if (game.getGameGrid().checkWin((int) x, (int) y)) {
+            sprite = LoadStuff.Sprite(SpriteAtlas.PLAYER_CORRECT);
+        } else {
+            sprite = LoadStuff.Sprite(SpriteAtlas.PLAYER);
+        }
+    }
+
     public void moveLeft() {
         if (okayToMove(-1, 0)) {
             x -= TILE_SIZE;
             moveSubPlayers(-TILE_SIZE, 0);
             checkForNewSubPlayers();
+            checkForWin();
         }
     }
+
     public void moveRight() {
         if (okayToMove(1, 0)) {
             x += TILE_SIZE;
             moveSubPlayers(TILE_SIZE, 0);
             checkForNewSubPlayers();
+            checkForWin();
         }
     }
 

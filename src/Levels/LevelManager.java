@@ -11,6 +11,7 @@ import static main.Game.TILES_IN_WIDTH;
 import static utils.Constants.SpriteAtlas.ATLAS_DIMENSIONS;
 import static utils.Constants.SpriteAtlas.GetAtlasPos;
 
+// TODO add win condition
 public class LevelManager {
     private Game game;
     private Level currentLevel;
@@ -47,7 +48,7 @@ public class LevelManager {
     public void render(Graphics g) {
         for (int i = 0; i < TILES_IN_HEIGHT; i++) {
             for (int j = 0; j < TILES_IN_WIDTH; j++) {
-                g.drawImage(mapBlocks[GetAtlasPos(game.getGameGrid().getGrid()[i][j]).y][GetAtlasPos(currentLevel.layout[i][j]).x], Game.TILE_SIZE * j, Game.TILE_SIZE * i, Game.TILE_SIZE, Game.TILE_SIZE, null);
+                g.drawImage(mapBlocks[GetAtlasPos(game.getGameGrid().getGrid()[i][j]).y][GetAtlasPos(game.getGameGrid().getGrid()[i][j]).x], Game.TILE_SIZE * j, Game.TILE_SIZE * i, Game.TILE_SIZE, Game.TILE_SIZE, null);
             }
         }
     }

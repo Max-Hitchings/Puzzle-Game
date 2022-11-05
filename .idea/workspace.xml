@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Load levels with json and added restart feature (bugs)">
+    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Fixed bugs with restarting level + now resets player aswell">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Levels/JsonLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels/JsonLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Levels/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels/Level.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Levels/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Levels/LevelManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/SubPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/SubPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +36,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Levels/LevelManager.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/inputs/KeyboardInputs.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/inputs/MouseInputs.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/Game.java" root0="FORCE_HIGHLIGHTING" />
@@ -72,7 +73,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -109,7 +110,9 @@
       <workItem from="1667560165450" duration="132000" />
       <workItem from="1667560304073" duration="159000" />
       <workItem from="1667560470109" duration="820000" />
-      <workItem from="1667561705677" duration="10355000" />
+      <workItem from="1667561705677" duration="10951000" />
+      <workItem from="1667616071335" duration="92000" />
+      <workItem from="1667616170078" duration="1722000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor /res directory">
       <created>1667147552288</created>
@@ -209,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667611891462</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fixed bugs with restarting level + now resets player aswell">
+      <created>1667615887854</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1667615887854</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,20 +280,25 @@
     <MESSAGE value="New player sprite pos for correct position" />
     <MESSAGE value="edit map a bit to test" />
     <MESSAGE value="Load levels with json and added restart feature (bugs)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Load levels with json and added restart feature (bugs)" />
+    <MESSAGE value="Fixed bugs with restarting level + now resets player aswell" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs with restarting level + now resets player aswell" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Levels/LevelManager.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Levels/LevelManager.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="21" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
+          <line>33</line>
+          <properties class="main.GameGrid" method="isOkayToMove">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

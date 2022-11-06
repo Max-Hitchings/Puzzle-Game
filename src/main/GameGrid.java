@@ -20,7 +20,12 @@ public class GameGrid {
 
     public void loadLevel(Level level) {
 //        Initialise grid
-        grid = level.layout;
+//        System.arraycopy(level.layout, 0, grid, 0, level.layout.length);
+        for (int y = 0; y < level.layout.length; y++) {
+            for (int x = 0; x < level.layout[y].length; x++) {
+                grid[y][x] = level.layout[y][x];
+            }
+        }
         finishTiles = 0;
         for (Grid.TYPES[] types : grid) {
             for (Grid.TYPES type : types) {

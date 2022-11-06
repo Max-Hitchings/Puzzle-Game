@@ -10,39 +10,52 @@ import static main.Game.TILES_IN_HEIGHT;
 import static main.Game.TILES_IN_WIDTH;
 import static utils.Constants.SpriteAtlas.ATLAS_DIMENSIONS;
 import static utils.Constants.SpriteAtlas.GetAtlasPos;
+import static utils.Constants.LEVEL_FILES;
 
 // TODO add win condition
 public class LevelManager {
     private Game game;
-    private Level currentLevel;
-    private Level level1;
+    private int currentLevelIndex = 0;
+    private static final Level[] levels = new Level[LEVEL_FILES.length];
     private BufferedImage[][] mapBlocks;
 
     public LevelManager(Game game) {
         this.game = game;
         loadMapBlocks();
-        level1 = LoadStuff.LoadJSONLevel("level_1.json");
-        currentLevel = level1;
+//        levels[currentLevelIndex] = LoadStuff.LoadJSONLevel("level_1.json");
+        loadLevels();
+        game.getGameGrid().loadLevel(levels[currentLevelIndex]);
+    }
 
-        game.getGameGrid().loadLevel(currentLevel);
+    private void loadLevels() {
+        for (int i = 0; i < LEVEL_FILES.length; i++) {
+            levels[i] = LoadStuff.LoadJSONLevel(LEVEL_FILES[i]);
+        }
     }
 
     private void loadMapBlocks() {
         mapBlocks = new BufferedImage[ATLAS_DIMENSIONS.y][ATLAS_DIMENSIONS.x];
         BufferedImage spriteSheet = LoadStuff.Image("sprites.png");
-        int k = 0;
         for (int i = 0; i < ATLAS_DIMENSIONS.y; i++) {
             for (int j = 0; j < ATLAS_DIMENSIONS.x; j++)  {
                 mapBlocks[i][j] = spriteSheet.getSubimage(j*32, i*32, 32, 32);
-                k++;
             }
         }
     }
 
     public void restartLevel() {
         game.getPlayer().reset();
-        currentLevel = LoadStuff.LoadJSONLevel("level_1.json");
-        game.getGameGrid().loadLevel(currentLevel);
+        game.getGameGrid().loadLevel(levels[currentLevelIndex]);
+    }
+
+    public void nextLevel() {
+        if (currentLevelIndex + 1 < levels.length) {
+            currentLevelIndex++;
+            restartLevel();
+        } else {
+            game.quit();
+        }
+
     }
 
     public void render(Graphics g) {
@@ -58,6 +71,6 @@ public class LevelManager {
     }
 
     public Level getCurrentLevel() {
-        return currentLevel;
+        return levels[currentLevelIndex];
     }
 }

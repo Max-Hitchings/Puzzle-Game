@@ -68,8 +68,8 @@ public class Player extends Entity{
 
     private void checkForNewSubPlayers() {
         addSubPlayer(game.getGameGrid().checkForNewSubPlayers((int) x, (int) y, new Point(0, 0)));
-        for (SubPlayer subPlayer : subPlayers) {
-            addSubPlayer(subPlayer.checkForNewSubPlayers());
+        for (int i = 0; i < subPlayers.size(); i++) {
+            addSubPlayer(subPlayers.get(i).checkForNewSubPlayers());
         }
 
     }
@@ -94,6 +94,6 @@ public class Player extends Entity{
     }
 
     private void triggerWin() {
-        System.out.println("win");
+        game.getLevelManager().nextLevel();
     }
 }

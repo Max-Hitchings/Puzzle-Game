@@ -3,6 +3,10 @@ package utils;
 import java.awt.Point;
 
 public class Constants {
+    public static final String[] LEVEL_FILES = {
+            "level_1.json",
+            "level_2.json"
+    };
     public enum PlayerSprites {
             NORMAL,
             CORRECT

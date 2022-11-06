@@ -117,6 +117,9 @@ public class Game implements Runnable{
         }
 
     }
+    public void quit() {
+        System.exit(0);
+    }
     public Player getPlayer() {
         return player;
     }

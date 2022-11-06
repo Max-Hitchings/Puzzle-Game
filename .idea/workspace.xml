@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Optimesed swapping of player sprites (hard coded sprites need to be changed down the line)">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Working win condition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/SubPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/SubPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +30,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Levels/LevelManager.java" root0="FORCE_HIGHLIGHTING" />
@@ -76,7 +75,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -113,7 +112,8 @@
       <workItem from="1667616071335" duration="92000" />
       <workItem from="1667616170078" duration="2326000" />
       <workItem from="1667618608962" duration="109000" />
-      <workItem from="1667618956547" duration="6818000" />
+      <workItem from="1667618956547" duration="9167000" />
+      <workItem from="1667695866260" duration="61000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor /res directory">
       <created>1667147552288</created>
@@ -241,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667660800347</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Working win condition">
+      <created>1667667076108</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667667076108</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +314,8 @@
     <MESSAGE value="Proof of concept player win conditions (im going to bed cba to do real thing)" />
     <MESSAGE value="Simplified player movement + cleaned up Player class" />
     <MESSAGE value="Optimesed swapping of player sprites (hard coded sprites need to be changed down the line)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimesed swapping of player sprites (hard coded sprites need to be changed down the line)" />
+    <MESSAGE value="Working win condition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working win condition" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -315,11 +323,20 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
           <line>20</line>
-          <properties class="main.GameGrid" method="loadLevel">
+          <properties class="main.GameGrid">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/entities/Player.java</url>
+          <line>92</line>
+          <properties class="entities.Player" method="triggerWin">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

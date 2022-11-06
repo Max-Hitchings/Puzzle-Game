@@ -33,24 +33,11 @@ public class KeyboardInputs implements KeyListener {
 //                gamePanel.getGame().getPlayer().setRight(true);
 //                break;
 
-            case KeyEvent.VK_A:
-            case KeyEvent.VK_LEFT:
-                gamePanel.getGame().getPlayer().move(new Point(-1, 0));
-                break;
-            case KeyEvent.VK_D:
-            case KeyEvent.VK_RIGHT:
-                gamePanel.getGame().getPlayer().move(new Point(1, 0));
-                break;
-            case KeyEvent.VK_W:
-            case KeyEvent.VK_UP:
-                gamePanel.getGame().getPlayer().move(new Point(0, -1));
-                break;
-            case KeyEvent.VK_S:
-            case KeyEvent.VK_DOWN:
-                gamePanel.getGame().getPlayer().move(new Point(0, 1));
-                break;
-            case KeyEvent.VK_R:
-                gamePanel.getGame().getLevelManager().restartLevel();
+            case KeyEvent.VK_A, KeyEvent.VK_LEFT -> gamePanel.getGame().getPlayer().move(new Point(-1, 0));
+            case KeyEvent.VK_D, KeyEvent.VK_RIGHT -> gamePanel.getGame().getPlayer().move(new Point(1, 0));
+            case KeyEvent.VK_W, KeyEvent.VK_UP -> gamePanel.getGame().getPlayer().move(new Point(0, -1));
+            case KeyEvent.VK_S, KeyEvent.VK_DOWN -> gamePanel.getGame().getPlayer().move(new Point(0, 1));
+            case KeyEvent.VK_R -> gamePanel.getGame().getLevelManager().restartLevel();
         }
     }
 

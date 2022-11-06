@@ -24,7 +24,6 @@ public class Player extends Entity{
     public void reset() {
         Point spawn = game.getLevelManager().getCurrentLevel().playerSpawn;
         subPlayers.clear();
-        sprite = sprites.get(Constants.PlayerSprites.NORMAL);
         x = spawn.x * TILE_SIZE;
         y = spawn.y * TILE_SIZE;
     }
@@ -68,8 +67,8 @@ public class Player extends Entity{
 
     private void checkForNewSubPlayers() {
         addSubPlayer(game.getGameGrid().checkForNewSubPlayers((int) x, (int) y, new Point(0, 0)));
-        for (SubPlayer subPlayer : subPlayers) {
-            addSubPlayer(subPlayer.checkForNewSubPlayers());
+        for (int i = 0; i < subPlayers.size(); i++) {
+            addSubPlayer(subPlayers.get(i).checkForNewSubPlayers());
         }
 
     }

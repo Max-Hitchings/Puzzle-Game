@@ -20,6 +20,7 @@ public class GameGrid {
 
     public void loadLevel(Level level) {
 //        Initialise grid
+//        grid = level.layout.clone();
         grid = level.layout;
         finishTiles = 0;
         for (Grid.TYPES[] types : grid) {
@@ -33,7 +34,11 @@ public class GameGrid {
     public boolean isOkayToMove(int x, int y) {
         x = x / TILE_SIZE;
         y = y / TILE_SIZE;
-        return grid[y][x] != Grid.TYPES.WALL && grid[y][x] != Grid.TYPES.EMPTY_PLAYER;
+        if (grid[y][x] != Grid.TYPES.WALL && grid[y][x] != Grid.TYPES.EMPTY_PLAYER){
+            return true;
+        } else {
+            return false;
+        }
     }
     public boolean checkWin(int x, int y) {
         x = x / TILE_SIZE;

@@ -86,6 +86,9 @@ public class Player extends Entity{
                 triggerWin();
             }
         } else {
+            for (SubPlayer subPlayer : subPlayers) {
+                subPlayer.checkForWin();
+            }
             sprite = sprites.get(Constants.PlayerSprites.NORMAL);
         }
     }

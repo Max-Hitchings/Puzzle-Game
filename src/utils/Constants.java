@@ -28,21 +28,14 @@ public class Constants {
         public static final Point FINISH_TILE = new Point(0, 2);
         public static final Point PLAYER_CORRECT = new Point(1, 2);
         public static Point GetAtlasPos(Grid.TYPES block) {
-            switch (block) {
-                case WALL:
-                    return WALL;
-                case PLAYER:
-                    return PLAYER;
-                case EMPTY_PLAYER:
-                    return EMPTY_PLAYER;
-                case FINISH_TILE:
-                    return FINISH_TILE;
-                case PLAYER_CORRECT:
-                    return PLAYER_CORRECT;
-                case EMPTY:
-                default:
-                    return EMPTY;
-            }
+            return switch (block) {
+                case WALL -> WALL;
+                case PLAYER -> PLAYER;
+                case EMPTY_PLAYER -> EMPTY_PLAYER;
+                case FINISH_TILE -> FINISH_TILE;
+                case PLAYER_CORRECT -> PLAYER_CORRECT;
+                case EMPTY, default -> EMPTY;
+            };
         }
     }
     public static class MapBlocks {
@@ -54,19 +47,13 @@ public class Constants {
 
 
         public static Grid.TYPES GetBlockType(char character) {
-            switch (character) {
-                case WALL:
-                    return Grid.TYPES.WALL;
-                case PLAYER_SPAWN:
-                    return Grid.TYPES.PLAYER;
-                case EMPTY_PLAYER:
-                    return Grid.TYPES.EMPTY_PLAYER;
-                case FINISH_TILE:
-                    return Grid.TYPES.FINISH_TILE;
-                case EMPTY:
-                default:
-                    return Grid.TYPES.EMPTY;
-            }
+            return switch (character) {
+                case WALL -> Grid.TYPES.WALL;
+                case PLAYER_SPAWN -> Grid.TYPES.PLAYER;
+                case EMPTY_PLAYER -> Grid.TYPES.EMPTY_PLAYER;
+                case FINISH_TILE -> Grid.TYPES.FINISH_TILE;
+                case EMPTY, default -> Grid.TYPES.EMPTY;
+            };
         }
     }
 }

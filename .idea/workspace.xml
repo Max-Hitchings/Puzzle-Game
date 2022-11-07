@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Cleaned up code a bit">
-      <change afterPath="$PROJECT_DIR$/res/level_tutorial.json" afterDir="false" />
+    <list default="true" id="1aa7c982-2537-417c-8510-6ce88bed333a" name="Changes" comment="Added new tutorial level">
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +118,7 @@
       <workItem from="1667769367299" duration="3464000" />
       <workItem from="1667775118410" duration="21000" />
       <workItem from="1667775185499" duration="499000" />
+      <workItem from="1667811758626" duration="1980000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor /res directory">
       <created>1667147552288</created>
@@ -269,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667757335253</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added new tutorial level">
+      <created>1667811855006</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1667811855006</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +343,8 @@
     <MESSAGE value="Working win condition" />
     <MESSAGE value="Fixed bug with subPlayers win condition" />
     <MESSAGE value="Migrate to java-19" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migrate to java-19" />
+    <MESSAGE value="Added new tutorial level" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new tutorial level" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -358,7 +364,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Levels/LevelManager.java</url>
-          <line>47</line>
+          <line>46</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>

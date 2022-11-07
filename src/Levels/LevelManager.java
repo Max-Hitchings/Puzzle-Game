@@ -57,6 +57,14 @@ public class LevelManager {
 
     }
 
+    public void previousLevel() {
+//        System.out.println(currentLevelIndex);
+        if (currentLevelIndex - 1 >= 0) {
+            currentLevelIndex--;
+            restartLevel();
+        }
+    }
+
     public void render(Graphics g) {
         for (int i = 0; i < TILES_IN_HEIGHT; i++) {
             for (int j = 0; j < TILES_IN_WIDTH; j++) {

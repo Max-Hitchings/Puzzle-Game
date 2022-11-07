@@ -12,7 +12,6 @@ import static utils.Constants.SpriteAtlas.ATLAS_DIMENSIONS;
 import static utils.Constants.SpriteAtlas.GetAtlasPos;
 import static utils.Constants.LEVEL_FILES;
 
-// TODO add win condition
 public class LevelManager {
     private Game game;
     private int currentLevelIndex = 0;

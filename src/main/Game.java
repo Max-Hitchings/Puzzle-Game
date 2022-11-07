@@ -39,8 +39,8 @@ public class Game implements Runnable{
 
     private void initClasses() {
         gameGrid = new GameGrid(TILES_IN_WIDTH, TILES_IN_HEIGHT);
-        player = new Player(this, 1, 1);
         levelManager = new LevelManager(this);
+        player = new Player(this, levelManager.getCurrentLevel().playerSpawn.x, levelManager.getCurrentLevel().playerSpawn.y);
         infoDisplay = new Display(GAME_WIDTH - 60, 15);
     }
 

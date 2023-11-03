@@ -6,7 +6,8 @@ public class Constants {
     public static final String[] LEVEL_FILES = {
             "level_tutorial.json",
             "level_1.json",
-            "level_2.json"
+            "level_2.json",
+            "level_3.json"
     };
     public enum PlayerSprites {
             NORMAL,

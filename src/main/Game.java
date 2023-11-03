@@ -61,6 +61,7 @@ public class Game implements Runnable{
         levelManager.render(g);
         player.render(g);
         infoDisplay.draw_display(g);
+//        "sout"
     }
     @Override
     public void run() {

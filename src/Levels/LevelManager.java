@@ -58,7 +58,6 @@ public class LevelManager {
     }
 
     public void previousLevel() {
-//        System.out.println(currentLevelIndex);
         if (currentLevelIndex - 1 >= 0) {
             currentLevelIndex--;
             restartLevel();

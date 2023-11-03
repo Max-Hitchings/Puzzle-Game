@@ -1,6 +1,6 @@
 package main;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 
@@ -24,7 +24,6 @@ public class GameWindow extends JFrame {
 
             @Override
             public void windowLostFocus(WindowEvent e) {
-                gamePanel.getGame().getPlayer().cancelMovement();
             }
         });
     }

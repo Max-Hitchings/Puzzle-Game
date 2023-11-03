@@ -1,9 +1,18 @@
 package Levels;
 
-public class Level {
-    public int[][] layout;
+import utils.Constants.Grid;
 
-    public Level(int[][] layout) {
+import java.awt.*;
+
+public class Level {
+//    Currently unused
+    public Point dimensions;
+    public Point playerSpawn;
+    public Grid.TYPES[][] layout;
+
+    public Level(Grid.TYPES[][] layout, Point playerSpawn, Point dimensions) {
         this.layout = layout;
+        this.playerSpawn = playerSpawn;
+        this.dimensions = dimensions;
     }
 }

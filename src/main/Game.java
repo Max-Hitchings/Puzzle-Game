@@ -15,11 +15,11 @@ public class Game implements Runnable{
     private final int TPS_SET = 200;
     private Player player;
     private LevelManager levelManager;
+    private GameGrid gameGrid;
     private Display infoDisplay;
-    int x = 10;
 
     public final static int TILE_NORMAL_SIZE = 32;
-    public final static float SCALE = 2f;
+    public final static float SCALE = 2.5f;
     public final static int TILES_IN_WIDTH = 16;
     public final static int TILES_IN_HEIGHT = 9;
     public final static int TILE_SIZE = (int) (TILE_NORMAL_SIZE * SCALE);
@@ -30,6 +30,7 @@ public class Game implements Runnable{
         initClasses();
 
         gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
+        gamePanel.setBackground(new Color(63, 75, 48));
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
 
@@ -37,9 +38,14 @@ public class Game implements Runnable{
     }
 
     private void initClasses() {
-        player = new Player(20, 20, TILE_SIZE, TILE_SIZE);
+        gameGrid = new GameGrid(TILES_IN_WIDTH, TILES_IN_HEIGHT);
         levelManager = new LevelManager(this);
+        player = new Player(this, levelManager.getCurrentLevel().playerSpawn.x, levelManager.getCurrentLevel().playerSpawn.y);
         infoDisplay = new Display(GAME_WIDTH - 60, 15);
+    }
+
+    public GameGrid getGameGrid() {
+        return gameGrid;
     }
 
     private void startGameLoop() {
@@ -49,12 +55,13 @@ public class Game implements Runnable{
 
     public void update() {
         levelManager.update();
-        player.update();
+//        player.update();
     }
     public void render(Graphics g) {
         levelManager.render(g);
         player.render(g);
         infoDisplay.draw_display(g);
+//        "sout"
     }
     @Override
     public void run() {
@@ -103,7 +110,7 @@ public class Game implements Runnable{
                 lastCheck = System.currentTimeMillis();
                 infoDisplay.updateFPS(frames);
                 infoDisplay.updateTPS(updates);
-                System.out.println("FPS " + frames + " | TPS: " + updates);
+//                System.out.println("FPS " + frames + " | TPS: " + updates);
                 frames = 0;
                 updates = 0;
             }
@@ -111,7 +118,11 @@ public class Game implements Runnable{
         }
 
     }
+    public void quit() {
+        System.exit(0);
+    }
     public Player getPlayer() {
         return player;
     }
+    public LevelManager getLevelManager() {return levelManager; };
 }

@@ -1,79 +1,99 @@
 package entities;
 
-import utils.LoadStuff;
-import utils.Constants.SpriteAtlas;
+import main.Game;
+import utils.Constants;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
+
+import static main.Game.TILE_SIZE;
 
 public class Player extends Entity{
-    private boolean up, down, left, right;
-    private float playerSpeed = 2.0f;
-    private BufferedImage sprite;
-
-    public Player(float x, float y, int width, int height) {
-        super(x, y, width, height);
-        sprite = LoadStuff.Sprite(SpriteAtlas.PLAYER);
+    private ArrayList<SubPlayer> subPlayers = new ArrayList<>();
+    public Player(Game game, int tilePosX, int tilePosY) {
+        super(game, tilePosX * TILE_SIZE, tilePosY * TILE_SIZE);
     }
-    public void update() {
-        updatePos();
-    }
-
-    private void updatePos() {
-        if (left && !right) {
-            x -= playerSpeed;
-        } else if (right && !left) {
-            x += playerSpeed;
-        }
-
-        if (up && !down) {
-            y -= playerSpeed;
-        } else if (down && !up) {
-            y += playerSpeed;
-        }
-    }
-
 
     public void render(Graphics g) {
-        g.drawImage(sprite, (int) x, (int) y, width, height, null);
+        g.drawImage(sprite, (int) x, (int) y, TILE_SIZE, TILE_SIZE, null);
+        for (SubPlayer subplayer : subPlayers) {
+            subplayer.render(g);
+        }
     }
 
-    public void cancelMovement() {
-        right = down = left = up = false;
+    public void reset() {
+        Point spawn = game.getLevelManager().getCurrentLevel().playerSpawn;
+        subPlayers.clear();
+        sprite = sprites.get(Constants.PlayerSprites.NORMAL);
+        x = spawn.x * TILE_SIZE;
+        y = spawn.y * TILE_SIZE;
     }
 
-    public boolean isUp() {
-        return up;
+    public void addSubPlayer(Point deltas) {
+        if (deltas != null){
+            subPlayers.add(new SubPlayer(this, deltas.x, deltas.y));
+        }
     }
 
-    public void setUp(boolean up) {
-        this.up = up;
+    public void move(Point delta) {
+        if (okayToMove(delta.x, delta.y)) {
+            x += delta.x * TILE_SIZE;
+            y += delta.y * TILE_SIZE;
+            moveSubPlayers(delta.x * TILE_SIZE, delta.y * TILE_SIZE);
+            checkForNewSubPlayers();
+            checkForWin();
+        }
     }
 
-    public boolean isDown() {
-        return down;
+    public void moveSubPlayers(int deltaX, int deltaY) {
+        for (SubPlayer subPlayer : subPlayers) {
+            subPlayer.move(deltaX, deltaY);
+        }
     }
 
-    public void setDown(boolean down) {
-        this.down = down;
+    private boolean okayToMove(int xDelta, int yDelta) {
+        boolean move = true;
+        boolean playerMove = game.getGameGrid().isOkayToMove((int) x + (xDelta * TILE_SIZE), (int) y + (yDelta * TILE_SIZE));
+        if (playerMove) {
+            for (SubPlayer subPlayer : subPlayers) {
+                if (!subPlayer.checkCollision(xDelta, yDelta)) {
+                    move = false;
+                }
+            }
+        } else {
+            move = false;
+        }
+        return move;
     }
 
-    public boolean isLeft() {
-        return left;
+    private void checkForNewSubPlayers() {
+        addSubPlayer(game.getGameGrid().checkForNewSubPlayers((int) x, (int) y, new Point(0, 0)));
+        for (int i = 0; i < subPlayers.size(); i++) {
+            addSubPlayer(subPlayers.get(i).checkForNewSubPlayers());
+        }
+
     }
 
-    public void setLeft(boolean left) {
-        this.left = left;
+    private void checkForWin() {
+        if (game.getGameGrid().checkWin((int) x, (int) y)) {
+            sprite = sprites.get(Constants.PlayerSprites.CORRECT);
+
+            boolean win = true;
+            for (SubPlayer subPlayer : subPlayers) {
+                if (!subPlayer.checkForWin()) win = false;
+            }
+            if (win && subPlayers.size() == game.getGameGrid().finishTiles - 1)  {
+                triggerWin();
+            }
+        } else {
+            for (SubPlayer subPlayer : subPlayers) {
+                subPlayer.checkForWin();
+            }
+            sprite = sprites.get(Constants.PlayerSprites.NORMAL);
+        }
     }
 
-    public boolean isRight() {
-        return right;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
+    private void triggerWin() {
+        game.getLevelManager().nextLevel();
     }
 }
